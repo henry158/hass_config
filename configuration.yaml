@@ -1,0 +1,89 @@
+homeassistant:
+  name: Lime Stone
+  latitude: !secret homeassistant_latitude
+  longitude: !secret homeassistant_longitude
+  elevation: !secret homeassistant_elevation
+  unit_system: imperial
+  time_zone: Europe/London
+  external_url: !secret external_url
+  #internal_url: !secret internal_url
+  # customize: !include_dir_merge_named customize
+  customize_domain:
+    automation:
+      initial_state: 'on'
+  packages: !include_dir_named packages
+  auth_providers:
+   - type: homeassistant
+   - type: trusted_networks
+     trusted_networks:
+       - 192.168.1.0/24
+#      - !secret external_ip
+     allow_bypass_login: true
+ # - type: legacy_api_password
+ #   api_password: !secret http_password
+http:
+  server_port: !secret http_port
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+media_player:
+  - platform: yamaha
+    host: 192.168.1.49
+    source_names:
+      AV1: "ChromeCast"
+      AV3: "Sky"
+      PHONO: "Vinyl"
+      AUDIO1: "Sonos"
+withings:
+  client_id: !secret  WITHINGS_CLIENT_ID
+  client_secret: !secret WITHINGS_CONSUMER_SECRET
+system_health:
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  database: homeassistant
+  username: homeassistant
+  password: faxeYuw3
+  max_retries: 3
+  default_measurement: state
+# Text to speech
+tts:
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_ID
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: 'eu-west-2'
+    text_type: ssml
+    voice: Amy
+    cache: True
+history:
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_player
+      - light
+      - binary_sensor
+      - cover
+
+logger: !include logger.yaml
+recorder: !include recorder.yaml
+
+mqtt:
+  broker: 127.0.0.1
+  port: 1883
+  client_id: home-assistant-henry
+  username: !secret MQTT_username
+  password: !secret MQTT_password
+
+
+homekit: !include homekit.yaml
+group: !include_dir_merge_named group
+device_tracker: !include_dir_merge_list device_tracker
+sensor: !include_dir_merge_list sensor
+automation: !include_dir_merge_list automation
+scene: !include_dir_merge_list scene
+switch: !include_dir_merge_list switch
+script: !include_dir_merge_named script
+input_boolean: !include_dir_merge_named input_boolean
+shell_command: !include_dir_merge_named shell_command

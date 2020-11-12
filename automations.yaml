@@ -1,0 +1,79 @@
+- id: '1604245693468'
+  alias: Turn on the lights when the sun is set
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - domain: light
+    entity_id: light.bedroom_lamp
+    device_id: 5bdb6197a7d96fa4c2aec5f5a9c0e613
+    type: turn_on
+  - domain: light
+    entity_id: light.table_lamp
+    device_id: f71a7256c8686d5eeecdf84604140d14
+    type: turn_on
+    brightness_pct: 50
+  - domain: light
+    entity_id: light.living_room_color_lamp
+    device_id: 0396a7e01c431317425cdc04c0abb70a
+    type: turn_on
+    brightness_pct: 50
+  - domain: light
+    entity_id: light.living_room_color_lamp_2
+    device_id: 99e371a55b08a3b31a8507a6fc924dae
+    type: turn_on
+    brightness_pct: 50
+  - domain: light
+    entity_id: light.hallway_light
+    device_id: 3c7b07c50559eaaf757e267a636c54fd
+    type: turn_on
+    brightness_pct: 50
+  mode: single
+- id: '1604245754195'
+  alias: Turn on the lights when the sun is set
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - domain: light
+    entity_id: light.bedroom_lamp
+    device_id: 5bdb6197a7d96fa4c2aec5f5a9c0e613
+    type: turn_on
+    brightness_pct: 75
+  - domain: light
+    entity_id: light.living_room_color_lamp
+    device_id: 0396a7e01c431317425cdc04c0abb70a
+    type: turn_on
+    brightness_pct: 75
+  - domain: light
+    entity_id: light.living_room_color_lamp_2
+    device_id: 99e371a55b08a3b31a8507a6fc924dae
+    type: turn_on
+    brightness_pct: 75
+  - domain: light
+    entity_id: light.table_lamp
+    device_id: f71a7256c8686d5eeecdf84604140d14
+    type: turn_on
+    brightness_pct: 75
+  - domain: light
+    entity_id: light.bedroom_side_lamp
+    device_id: c590fc53340abca69e507863739ff7b3
+    type: turn_on
+    brightness_pct: 75
+  mode: single
+- id: '1605183248922'
+  alias: Daily Vacuum
+  description: ''
+  trigger:
+  - platform: time
+    at: '12:00:00'
+  condition: []
+  action:
+  - service: vacuum.start
+    data: {}
+    entity_id: vacuum.xiaomi_vacuum_cleaner
+  mode: single

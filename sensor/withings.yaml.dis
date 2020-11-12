@@ -1,0 +1,5 @@
+# Example configuration.yaml entry
+withings:
+  client_id: !secret  WITHINGS_CLIENT_ID
+  client_secret: !secret WITHINGS_CONSUMER_SECRET
+  use_webhook: true

@@ -1,0 +1,28 @@
+---
+hello_world:
+  module: hello
+  class: HelloWorld
+octocost:
+  module: octocost 
+  class: OctoCost 
+  region: H
+  mpan: 2000018599160
+  serial: 19L3581324
+  auth: sk_live_w95M229x4ogugXxchfYOpjXk
+  startdate: 2020-02-23
+  gas:
+    mprn: 3976168605
+    gasserial: E6S14283791961
+    gas_tariff: FIX-12M-20-02-12
+    gas_startdate: 2020-02-23
+octo_block_2hour:
+  module: octoblock
+  class: OctoBlock
+  auth: 
+  hour: 2
+
+octo_block_3hour:
+  module: octoblock
+  class: OctoBlock
+  auth: sk_live_w95M229x4ogugXxchfYOpjXk
+  hour: 3

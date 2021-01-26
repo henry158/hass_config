@@ -1,0 +1,4 @@
+host: a0d7b954_influxdb
+max_retries: 3
+tags:
+  source: hass

@@ -29,7 +29,7 @@ http:
 default_config:
 media_player:
   - platform: yamaha
-    host: 192.168.1.49
+    host: 192.168.1.95
     source_names:
       AV1: "ChromeCast"
       AV3: "Sky"
@@ -39,14 +39,7 @@ withings:
   client_id: !secret  WITHINGS_CLIENT_ID
   client_secret: !secret WITHINGS_CONSUMER_SECRET
 system_health:
-influxdb:
-  host: 127.0.0.1
-  port: 8086
-  database: homeassistant
-  username: homeassistant
-  password: faxeYuw3
-  max_retries: 3
-  default_measurement: state
+influxdb: !include influxdb.yaml
 # Text to speech
 tts:
   - platform: amazon_polly
@@ -75,7 +68,14 @@ mqtt:
   client_id: home-assistant-henry
   username: !secret MQTT_username
   password: !secret MQTT_password
-
+# Example configuration.yaml entry
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+  # "Project ID" in the Device Access Console
+  project_id: !secret project_id
+  # Provide the full path exactly as shown under "Subscription name" in Google Cloud Console
+  subscriber_id: !secret subscriber_id
 
 homekit: !include homekit.yaml
 group: !include_dir_merge_named group
